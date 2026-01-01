@@ -60,6 +60,7 @@ export const logout = async (req, res) => {
   res.cookie('token', '', {
     httpOnly: true,
     sameSite: 'none',
+    secure: env.NODE_ENV === 'production',
     expires: new Date(0)
   });
   return res.json({ message: 'Logged out successfully' });
